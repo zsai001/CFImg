@@ -9,8 +9,8 @@ export async function onRequestPost(context) {  // Contents of context object
     } = context;
     context.request
     const url = new URL(request.url);
-    let real_host = request.headers.get('x-real-host')
-    const response = fetch('https://' + real_host + "/upload" + url.search, {
+    let real_host = request.headers.get('x-real-url');
+    const response = fetch(real_host, {
         method: request.method,
         headers: request.headers,
         body: request.body,
