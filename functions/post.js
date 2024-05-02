@@ -10,7 +10,7 @@ export async function onRequestPost(context) {  // Contents of context object
     context.request
     const url = new URL(request.url);
     let real_host = request.headers.get('x-real-host')
-    const response = fetch('https://'  + url.pathname + url.search, {
+    const response = fetch('https://' + real_host + url.pathname + url.search, {
         method: request.method,
         headers: request.headers,
         body: request.body,
