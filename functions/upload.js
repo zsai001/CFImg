@@ -10,7 +10,8 @@ export async function onRequestPost(context) {  // Contents of context object
      context.request
     let back = env.BackEnd;
      const url = new URL(request.url);
-     const response = fetch('https://' + back + url.pathname + url.search, {
+     request.headers.set('origin', request.host);
+     const response = fetch(real_host + '/' + url.pathname + url.search, {
          method: request.method,
          headers: request.headers,
          body: request.body,
